@@ -494,18 +494,20 @@
             </TabItem>
             <TabItem x:Name="tab2" Visibility="Collapsed" Header="TabItem">
                 <Grid Background="Transparent" Width="420" Height="500">
-                    <Rectangle Fill="#5e38a5" Width="350" Height="400" Margin="0,0,0,70" Opacity="0.5" RadiusX="15" RadiusY="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Grid Height="310" Width="300" Margin="0,0,0,80" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Rectangle Fill="#5e38a5" Width="350" Height="410" Margin="0,0,0,80" Opacity="0.5" RadiusX="15" RadiusY="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Content="Угол поворота" FontSize="14" Margin="0,0,100,445" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                    <Grid Height="310" Width="300" Margin="0,0,0,90" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <Border CornerRadius="5" BorderThickness="5" BorderBrush="#5e38a5">
-                                <StackPanel MaxWidth="300" Name="Scroll" Background="#5e38a5" >
+                            <Border CornerRadius="5" BorderThickness="5" BorderBrush="#5e38a5" Background="#5e38a5">
+                                <StackPanel Width="280" Height="300" Name="Scroll" Background="#5e38a5" HorizontalAlignment="Left">
                                     <Grid x:Name="dyn1" Width="250" Height="50" HorizontalAlignment="Center">
                                     </Grid>
                                 </StackPanel>
                             </Border>
                         </ScrollViewer>
                     </Grid>
-                    <Button x:Name="testbtnAdd" Click="testbtnAdd_Click" Style="{DynamicResource SimpleButton}" FontSize="14" Width="150" Height="35" Margin="0,285,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button x:Name="testbtnAdd" Click="testbtnAdd_Click" Style="{DynamicResource SimpleButton}" FontSize="14" Width="150" Height="35" Margin="0,270,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock Text="Добавить строку" FontSize="14" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" TextAlignment="Center" Padding="8"/>
                     </Button>
                     <RadioButton x:Name="FromZero" Checked="FromZero_Checked" Content="От нуля" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,370,264,0 "/>
@@ -521,6 +523,5 @@
         <Label FontSize="35" FontWeight="Bold" Content="ПОВОРОТНАЯ ПЛАТФОРМА" Margin="671,61,29,579" Height="60" Width="500" FontFamily="Arial"/>
         <Label FontSize="25" Content="Текущий угол стола" Margin="883,137,67,523" Height="40" Width="250" FontFamily="Arial"/>
         <Label x:Name="statusLabel"  FontSize="20" Content="Статус" Margin="890,605,145,55" Height="40" FontFamily="Arial"/>
-        <Label x:Name="testLabel" Content="Label" HorizontalAlignment="Left" Margin="78,486,0,0" VerticalAlignment="Top" Width="49"/>
     </Grid>
 </Window>

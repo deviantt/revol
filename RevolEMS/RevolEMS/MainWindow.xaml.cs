@@ -20,7 +20,7 @@ namespace WpfApp1
 				else if (value < 0.0 && value > -360.0) _angle = 360.0 + value;
 				else if (value >= 360.0) _angle = value % 360.0;
 				else if (value <= -360.0) _angle = value % 360.0 + 360.0;
-				Dispatcher.Invoke(new Action(delegate { Output.Content = _angle.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture); }));
+				Dispatcher.Invoke(new Action(delegate { Output.Content = _angle.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "°"; }));
 			}
 		}
 		private int stepsperrevolution = 400;
@@ -83,33 +83,31 @@ namespace WpfApp1
 
 		private void KeyboardControlReleased(object sender, KeyEventArgs e)
 		{
-			if (rad2.IsChecked == true && !rotating)
-				switch (e.Key)
-				{
-					case Key.Left:
-						{ RotateCW_PreviewMouseLeftButtonUp(new object(), null); }
-						break;
-					case Key.Right:
-						{ RotateCCW_PreviewMouseLeftButtonUp(new object(), null); }
-						break;
-				}
+			switch (e.Key)
+			{
+				case Key.Left:
+					{ RotateCW_PreviewMouseLeftButtonUp(new object(), null); }
+					break;
+				case Key.Right:
+					{ RotateCCW_PreviewMouseLeftButtonUp(new object(), null); }
+					break;
+			}
 		}
 
 		private void KeyboardControlPressed(object sender, KeyEventArgs e)
 		{
-			if (rad2.IsChecked == true)
-				switch (e.Key)
-				{
-					case Key.Left:
-						{ if (!rotating) RotateCW_PreviewMouseLeftButtonDown(new object(), null); }
-						break;
-					case Key.Right:
-						{ if (!rotating) RotateCCW_PreviewMouseLeftButtonDown(new object(), null); }
-						break;
-					case Key.Down:
-						{ PlayPause_Click(new object(), new RoutedEventArgs()); }
-						break;
-				}
+			switch (e.Key)
+			{
+				case Key.Left:
+					{ if (!rotating) RotateCW_PreviewMouseLeftButtonDown(new object(), null); }
+					break;
+				case Key.Right:
+					{ if (!rotating) RotateCCW_PreviewMouseLeftButtonDown(new object(), null); }
+					break;
+				case Key.Down:
+					{ PlayPause_Click(new object(), new RoutedEventArgs()); }
+					break;
+			}
 		}
 
 		private void HandleRecievedData(object sender, string recieveddata)
@@ -217,7 +215,7 @@ namespace WpfApp1
 
 		private void btnHome_Click(object sender, RoutedEventArgs e)
 		{
-			Rotation(0 - totalsteps);
+			//Rotation(0 - totalsteps % );
 		}
 
 		private void btnSetHome_Click(object sender, RoutedEventArgs e)
@@ -353,25 +351,25 @@ namespace WpfApp1
 
 		private void testbtnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			int[] widths = new int[] { 30, 70, 40, 70, 40 };
+			int[] widths = new int[] { 80, 50, 80, 40 };
 			Grid grid = new Grid() { Name = $"dynGrid{grids.Count}", Width = 250, Height = 50, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
-			for (int i = 0; i < 5; i++) grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(widths[i]) });
+			for (int i = 0; i < 4; i++) grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(widths[i]) });
 
-			Label dynLabel = new Label() { Name = $"dynLabel{grids.Count}", Content = grids.Count + 1 };//, Style = FindResource("dynamicLabel") as Style };
-			Grid.SetColumn(dynLabel, 0);
-			grid.Children.Add(dynLabel);
+			//Label dynLabel = new Label() { Name = $"dynLabel{grids.Count}", Content = grids.Count + 1 };//, Style = FindResource("dynamicLabel") as Style };
+			//Grid.SetColumn(dynLabel, 0);
+			//grid.Children.Add(dynLabel);
 
-			TextBox dynTxtAngle = new TextBox() { Name = $"dynTxtAngle{grids.Count}", Height = 40, Width = 50 };
-			Grid.SetColumn(dynTxtAngle, 1);
+			TextBox dynTxtAngle = new TextBox() { Name = $"dynTxtAngle{grids.Count}", Height = 40, Width = 70 };
+			Grid.SetColumn(dynTxtAngle, 0);
 			grid.Children.Add(dynTxtAngle);
 
-			TextBox dynTxtSpeed = new TextBox() { Name = $"dynTxtSpeed{grids.Count}", Height = 40, Width = 50 };
-			Grid.SetColumn(dynTxtSpeed, 3);
+			TextBox dynTxtSpeed = new TextBox() { Name = $"dynTxtSpeed{grids.Count}", Height = 40, Width = 70 };
+			Grid.SetColumn(dynTxtSpeed, 2);
 			grid.Children.Add(dynTxtSpeed);
 
 			Button dynBtn = new Button() { Name = $"dynBtn{grids.Count}", ClickMode = ClickMode.Press, Style = FindResource("dynamicRemoveBtn") as Style };
 			dynBtn.Click += RemoveGrid;
-			Grid.SetColumn(dynBtn, 4);
+			Grid.SetColumn(dynBtn, 3);
 			grid.Children.Add(dynBtn);
 
 			grids.Add(grid);
