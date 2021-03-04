@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WpfApp1
 {
@@ -245,13 +246,25 @@ namespace WpfApp1
 			if (rad2.IsChecked == true) ForceStop_Click(new object(), new RoutedEventArgs());
 		}
 
+		private void RefreshGrids()
+        {
+			Scroll.Children.Clear();
+			foreach (Grid gr in grids) Scroll.Children.Add(gr);
+		}
+
+		private void RemoveGrid(object sender, RoutedEventArgs e)
+        {
+			foreach (Grid gr in grids.ToList()) if (gr.Children.Contains((UIElement)sender)) grids.RemoveAt(grids.FindIndex(x => x == gr));
+			RefreshGrids();
+        }
+
 		private void testbtnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			int[] widths = new int[] { 30, 70, 40, 70, 40 };
+			int[] widths = new int[] { 20, 70, 40, 70, 40 };
 			Grid grid = new Grid() { Name = $"dynGrid{grids.Count}", Width = 250, Height = 50, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Top };
 			for (int i = 0; i < 5; i++) grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(widths[i]) });
 
-			Label dynLabel = new Label() { Name = $"dynLabel{grids.Count}", Content = "TestAsd", Style = FindResource("dynamicLabel") as Style };
+			Label dynLabel = new Label() { Name = $"dynLabel{grids.Count}", Content = $"{grids.Count + 1}.", Style = FindResource("dynamicLabel") as Style };
 			Grid.SetColumn(dynLabel, 0);
 			grid.Children.Add(dynLabel);
 
@@ -263,13 +276,12 @@ namespace WpfApp1
 			Grid.SetColumn(dynTxtSpeed, 3);
 			grid.Children.Add(dynTxtSpeed);
 
-			Button dynBtn = new Button() { Name = $"dynBtn{grids.Count}", Width = 20, Height = 20 };
+			Button dynBtn = new Button() { Name = $"dynBtn{grids.Count}", Width = 36, Height = 36, Style = FindResource("dynamicRemoveBtn") as Style };
+			dynBtn.Click += RemoveGrid;
 			Grid.SetColumn(dynBtn, 4);
 			grid.Children.Add(dynBtn);
-
 			grids.Add(grid);
-			Scroll.Children.Clear();
-			foreach (Grid gr in grids) Scroll.Children.Add(gr);
+			RefreshGrids();
 		}
 	}
 }
