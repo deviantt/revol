@@ -34,7 +34,8 @@ namespace WpfApp1
 			get { return _totalsteps; }
 			set
 			{
-				_totalsteps = value;
+				if (value > stepsperrevolution * tableteeth / shaftteeth) _totalsteps = value % stepsperrevolution * tableteeth / shaftteeth;
+				else _totalsteps = value;
 				angle = _totalsteps / (stepsperrevolution * ((double)tableteeth / shaftteeth)) * 360;
 			}
 		}
@@ -215,7 +216,7 @@ namespace WpfApp1
 
 		private void btnHome_Click(object sender, RoutedEventArgs e)
 		{
-			//Rotation(0 - totalsteps % );
+			Rotation(0 - totalsteps);
 		}
 
 		private void btnSetHome_Click(object sender, RoutedEventArgs e)
@@ -228,16 +229,21 @@ namespace WpfApp1
 
 		private void minusAngle_Click(object sender, RoutedEventArgs e)
 		{
-			double OutVal = double.Parse(angleBox.Text, System.Globalization.CultureInfo.InvariantCulture);
+			double OutVal = double.Parse(angleBox.Text.Trim('°'), System.Globalization.CultureInfo.InvariantCulture);
 			OutVal -= 1;
 			angleBox.Text = OutVal.ToString("00.0", System.Globalization.CultureInfo.InvariantCulture);
 		}
 
 		private void plusAngle_Click(object sender, RoutedEventArgs e)
 		{
-			double OutVal = double.Parse(angleBox.Text, System.Globalization.CultureInfo.InvariantCulture);
+			double OutVal = double.Parse(angleBox.Text.Trim('°'), System.Globalization.CultureInfo.InvariantCulture);
 			OutVal += 1;
 			angleBox.Text = OutVal.ToString("00.0", System.Globalization.CultureInfo.InvariantCulture);
+		}
+
+		private void angleBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (angleBox.Text[angleBox.Text.Length - 1] == '°') angleBox.Text = angleBox.Text + "°";
 		}
 
 		private void angleBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

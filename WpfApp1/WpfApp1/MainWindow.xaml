@@ -483,12 +483,11 @@
 
                     <Button x:Name="minusAngle" Click="minusAngle_Click" Style="{DynamicResource Minus}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="170, 0, 0, 100"/>
                     <Button x:Name="plusAngle" Click="plusAngle_Click" Style="{DynamicResource Plus}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="370, 0, 0, 100"/>
-                    <TextBox x:Name="angleBox" IsEnabled="False" PreviewTextInput="angleBox_PreviewTextInput" Height="30" MaxHeight="30" Width="55" MaxWidth="55" MaxLength="5" Margin="270,0,0,100" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Text="31" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox x:Name="angleBox" IsEnabled="False" TextChanged="angleBox_TextChanged" PreviewTextInput="angleBox_PreviewTextInput" Height="30" MaxHeight="30" Width="55" MaxWidth="55" MaxLength="5" Margin="270,0,0,100" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Text="31.0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                     <Label FontSize="17" Content="Скорость вращения, (об/мин)" Margin="24,0,0,130" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
                     <Button x:Name="minusSpeed" Click="minusSpeed_Click"  Style="{DynamicResource Minus}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="170, 0, 0, 130"/>
                     <Button x:Name="plusSpeed" Click="plusSpeed_Click"  Style="{DynamicResource Plus}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="370, 0, 0, 130"/>
-                    <!--<xctk:MaskedTextBox x:Name="angleBox" PreviewTextInput="angleBox_PreviewTextInput" Mask="00º" PromptChar="0" FontSize="20" TextAlignment="Center" Height="30" MaxHeight="30" Width="55" MaxWidth="55" IsEnabled="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="270,0,0,30"/>-->
                     <TextBox x:Name="speedBox" TextChanged="speedBox_TextChanged" PreviewTextInput="speedBox_PreviewTextInput"  Height="30" MaxHeight="30" Width="55" MaxWidth="55" MaxLength="3" Margin="270,0,0,130" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Text="3.4" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>

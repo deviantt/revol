@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevolEMS", "RevolEMS\RevolEMS.csproj", "{29B9239A-F1B9-4C0C-91AD-5EFC789E36B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{8D1F15DE-BB52-468C-9A0B-B802AE17070C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{29B9239A-F1B9-4C0C-91AD-5EFC789E36B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29B9239A-F1B9-4C0C-91AD-5EFC789E36B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29B9239A-F1B9-4C0C-91AD-5EFC789E36B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29B9239A-F1B9-4C0C-91AD-5EFC789E36B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1F15DE-BB52-468C-9A0B-B802AE17070C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1F15DE-BB52-468C-9A0B-B802AE17070C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1F15DE-BB52-468C-9A0B-B802AE17070C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1F15DE-BB52-468C-9A0B-B802AE17070C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BD14EB30-9B46-4656-97EC-85C1C4F35655}
+		SolutionGuid = {965C8ACC-BE5B-43CB-9195-2407BEE603A8}
 	EndGlobalSection
 EndGlobal
